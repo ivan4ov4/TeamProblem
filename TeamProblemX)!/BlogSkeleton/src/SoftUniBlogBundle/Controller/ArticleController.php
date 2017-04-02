@@ -92,31 +92,43 @@ class ArticleController extends Controller
     /**
 
      * @Route("/article/delete/{id}", name="article_delete")
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     *
      *
      * @param $id
-     * @param Request $request
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      *
      */
-    public function delete($id, Request $request)
+    public function delete($id)
     {
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
 
-        if ($article === null) {
+        if ($article == null) {
             return $this->redirectToRoute("blog_index");
         }
-        $form = $this->createForm(ArticleType::class,$article);
-        $form->handleRequest($request);
+        return $this->render('article/delete.html.twig', ['id' => $id]);
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($article);
-            $em->flush();
+
+    }
+    /**
+     * @Route("/article/confirm/{id}", name="article_confirm_delete")
+     *
+     *
+     * @param $id
+     *
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     *
+     */
+    public function confirmDelete($id)
+    {
+        $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
+
+        if ($article != null) {
+            $data = $this->getDoctrine()->getManager();
+            $data->remove($article);
+            $data->flush();
         }
-
-
+        return $this->redirectToRoute("blog_index");
     }
 
 }

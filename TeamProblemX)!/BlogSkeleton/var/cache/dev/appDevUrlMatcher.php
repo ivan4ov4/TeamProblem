@@ -121,6 +121,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'article_delete')), array (  '_controller' => 'SoftUniBlogBundle\\Controller\\ArticleController::delete',));
             }
 
+            // article_confirm_delete
+            if (0 === strpos($pathinfo, '/article/confirm') && preg_match('#^/article/confirm/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'article_confirm_delete')), array (  '_controller' => 'SoftUniBlogBundle\\Controller\\ArticleController::confirmDelete',));
+            }
+
         }
 
         // blog_index
