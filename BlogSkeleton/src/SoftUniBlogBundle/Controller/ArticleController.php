@@ -106,7 +106,9 @@ class ArticleController extends Controller
         if ($article === null) {
             return $this->redirectToRoute("blog_index");
         }
+
         $form = $this->createForm(ArticleType::class,$article);
+
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
@@ -114,8 +116,14 @@ class ArticleController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->remove($article);
             $em->flush();
+
+            return $this->redirectToRoute('blog_index');
         }
 
+        return $this->render('article/delete.html.twig', [
+            'article' => $article,
+            'form' => $form->createView()
+        ]);
 
     }
 

@@ -3,9 +3,15 @@
 {% block body_id 'profile' %}
 
 {% block main %}
-    <div>
-        {{ user.email }}
-        <br>
-        {{ user.fullName }}
-    </div>
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            E-mail: {{ user.email }}
+        </li>
+        <li class="list-group-item">
+           Full name: {{ user.fullName }}
+        </li>
+    </ul>
+
 {% endblock %}
+
