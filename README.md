@@ -12,16 +12,26 @@ SoftUni Team Project and defence
   PHP
   Symfony MVC 
  
- Site map 
+ Site map  
+
  / - view all posts
+ 
  /register - register new user
+ 
  /login    - login register user 
+ 
  /logout   - logout login user
+ 
  /profile  - view user info
+ 
  /article/{id} - view article id 
+ 
  /article/create  - create article
+ 
  /article/edit/{id} - edit article id 
+ 
  /article/delete/{id} - delete artile id
+ 
  
  Using reources
  -PHP: Blog Basic Functionality: https://softuni.bg/trainings/resources/video/13416/video-screen-14-march-2017-vladimir-damyanovski-software-technologies-february-2017
