@@ -6,11 +6,18 @@
 
     <ul class="list-group">
         <li class="list-group-item">
+            Id: {{ user.id }}
+        </li>
+        <li class="list-group-item">
             E-mail: {{ user.email }}
         </li>
         <li class="list-group-item">
            Full name: {{ user.fullName }}
         </li>
+        <li class="list-group-item">
+            Pass: {{ user.password }}
+        </li>
+
     </ul>
 
 {% endblock %}

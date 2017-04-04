@@ -10,6 +10,7 @@ use SoftUniBlogBundle\Form\UserType;
 use SoftUniBlogBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use SoftUniBlogBundle\Entity\Role;
 
 class UserController extends Controller
 {
@@ -35,6 +36,11 @@ class UserController extends Controller
             $user->setPassword($password);
 
             // 4) save the User!
+
+            $role = $this->getDoctrine()->getRepository(Role::class)->findOneBy(['name' => 'ROLE_USER']);
+
+            $user->addRole($role);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
             $em->flush();
