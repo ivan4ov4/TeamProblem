@@ -72,9 +72,9 @@ class ArticleController extends Controller
             return $this->redirectToRoute("blog_index");
         }
 
-        $currentUser = $this->getUser();
+        $user = $this->getUser();
 
-        if (!$currentUser->isAuthor($article) && !$currentUser->isAdmin()){
+        if (!$user->isAuthor($article)){
             return $this->redirectToRoute("blog_index");
         }
 
@@ -111,12 +111,6 @@ class ArticleController extends Controller
 
         if ($article === null) {
             return $this->redirectToRoute("blog_index");
-        }
-
-        $currentUser = $this->getUser();
-
-        if(!$currentUser->isAuthor($article) && !$currentUser->isAdmin()){
-        return $this->redirectToRoute("blog_index");
         }
 
         $form = $this->createForm(ArticleType::class,$article);
