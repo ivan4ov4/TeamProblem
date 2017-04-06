@@ -52,6 +52,7 @@ MainWinLeft<|||>3<|||>188
 MainWinTop<|||>3<|||>156
 MainWinWidth<|||>3<|||>1067
 MainWinHeight<|||>3<|||>525
+DateTimeEditor_CursorPos_Type4<|||>3<|||>0
 Servers\Unnamed\SessionCreated<|||>1<|||>2016-10-31 14:03:39
 Servers\Unnamed\Host<|||>1<|||>127.0.0.1
 Servers\Unnamed\WindowsAuth<|||>3<|||>0
@@ -81,9 +82,10 @@ Servers\Unnamed\SSL_Cert<|||>1<|||>
 Servers\Unnamed\SSL_CA<|||>1<|||>
 Servers\Unnamed\SSL_Cipher<|||>1<|||>
 Servers\Unnamed\ServerVersionFull<|||>1<|||>10.1.13-MariaDB - mariadb.org binary distribution
-Servers\Unnamed\ConnectCount<|||>3<|||>11
+Servers\Unnamed\ConnectCount<|||>3<|||>13
 Servers\Unnamed\ServerVersion<|||>3<|||>100113
-Servers\Unnamed\LastConnect<|||>1<|||>2017-04-05 08:28:46
+Servers\Unnamed\LastConnect<|||>1<|||>2017-04-06 17:54:48
 Servers\Unnamed\lastUsedDB<|||>1<|||>blog
-Servers\Unnamed\blog|articles\Sort<|||>1<|||>0_dateAdded|1_id|0_authorId|
-Servers\Unnamed\blog|users\Sort<|||>1<|||>0_password|1_email|1_id|1_fullName|
+Servers\Unnamed\RefusedCount<|||>3<|||>1
+Servers\Unnamed\blog|articles\Sort<|||>1<|||>0_dateAdded|0_authorId|
+Servers\Unnamed\blog|users\Sort<|||>1<|||>0_id|0_email|0_fullName|

@@ -49,12 +49,13 @@ class ArticleController extends Controller
     public function viewArticle($id)
     {
         $article = $this->getDoctrine()->getRepository(Article::class)->find($id);
+        $user = $this->getUser();
 
         if($article == null){
             return $this -> redirectToRoute("blog_index");
         }
 
-        return $this->render('article/article.html.twig', ['article' => $article]);
+        return $this->render('article/article.html.twig', ['article' => $article, 'user' => $user]);
     }
 
     /**

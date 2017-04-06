@@ -16,6 +16,7 @@ use SoftUniBlogBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -27,11 +28,20 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class SecurityController extends Controller
 {
+
+    /**
+     * @var ContainerInterface
+     */
+    protected $container;
+
     /**
      * @Route("/login", name="security_login")
      */
     public function loginAction()
     {
+        #if( $this->container->get('security.authorization_checker')->isGranted('ROLE_ADMIN') ){
+        #    return $this->redirectToRoute("admin_users_all");
+        #}
         return $this->render('security/login.html.twig');
     }
 

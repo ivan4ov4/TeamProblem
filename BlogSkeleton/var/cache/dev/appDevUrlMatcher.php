@@ -102,13 +102,31 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         if (0 === strpos($pathinfo, '/a')) {
             if (0 === strpos($pathinfo, '/admin/user')) {
-                // admin_users_all
+                // admin_admin_panel
                 if (rtrim($pathinfo, '/') === '/admin/user') {
                     if (substr($pathinfo, -1) !== '/') {
-                        return $this->redirect($pathinfo.'/', 'admin_users_all');
+                        return $this->redirect($pathinfo.'/', 'admin_admin_panel');
                     }
 
-                    return array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::listUsers',  '_route' => 'admin_users_all',);
+                    return array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::adminPanel',  '_route' => 'admin_admin_panel',);
+                }
+
+                // admin_admin_categories
+                if ($pathinfo === '/admin/user/categories') {
+                    return array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::categories',  '_route' => 'admin_admin_categories',);
+                }
+
+                if (0 === strpos($pathinfo, '/admin/user/list')) {
+                    // admin_users_all
+                    if ($pathinfo === '/admin/user/list/user') {
+                        return array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::listUsers',  '_route' => 'admin_users_all',);
+                    }
+
+                    // admin_list_articles
+                    if ($pathinfo === '/admin/user/list/articles') {
+                        return array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::listAtricles',  '_route' => 'admin_list_articles',);
+                    }
+
                 }
 
                 // admin_user_edit
@@ -119,6 +137,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 // admin_user_delete
                 if (0 === strpos($pathinfo, '/admin/user/delete') && preg_match('#^/admin/user/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
                     return $this->mergeDefaults(array_replace($matches, array('_route' => 'admin_user_delete')), array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::deleteUser',));
+                }
+
+                // admin_user_register
+                if ($pathinfo === '/admin/user/register') {
+                    return array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::registerAction',  '_route' => 'admin_user_register',);
+                }
+
+                // article_user_edit
+                if (0 === strpos($pathinfo, '/admin/user/list/article/edit') && preg_match('#^/admin/user/list/article/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'article_user_edit')), array (  '_controller' => 'SoftUniBlogBundle\\Controller\\Admin\\UserController::editArticle2',));
                 }
 
             }

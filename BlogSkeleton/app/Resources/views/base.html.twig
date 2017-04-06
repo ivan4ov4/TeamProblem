@@ -38,8 +38,12 @@
                                     <li class="dropdown">
                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Admin<span class="caret"></span></a>
                                            <ul class="dropdown-menu" role="menu">
+                                               <li><a href="{{ path('admin_admin_panel') }}">Admin Panel</a></li>
                                                <li><a href="{{ path('admin_users_all') }}">User</a></li>
-                                               <li><a href="#">Categories</a></li>
+                                               <li><a href="{{ path('admin_list_articles') }}">Articles</a></li>
+                                               <li><a href="{{ path('admin_admin_categories') }}">Categories</a></li>
+                                               <li class="divider"></li>
+                                               <li><a href="{{ path('admin_user_register') }}">Register User</a></li>
                                            </ul>
                                     </li>
                                    {% endif %}
