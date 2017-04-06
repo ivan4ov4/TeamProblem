@@ -6,7 +6,7 @@ SoftUni Team Project and defence
  
  Team members 
   Ivan Simeonov - ivan4ov4
-  Daniel Vasilev - 
+  Daniel Vasilev - DanielVasilev98
  
  Technologie is used 
   PHP
