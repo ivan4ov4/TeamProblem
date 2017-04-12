@@ -9,6 +9,7 @@
 namespace SoftUniBlogBundle\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use SoftUniBlogBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SoftUniBlogBundle\Entity\User;
 use SoftUniBlogBundle\Form\UserEditType;
@@ -59,6 +60,12 @@ class AdminUserController extends Controller
             'form' => $form->createView()
             ]);
 
+    }
+
+    public function listArticles(){
+        $articles = $this->getDoctrine()->getRepository(ArticleType::class)->findAll();
+
+        return $this->render('admin/articles.html.twig', ['users' => $articles]);
     }
 
 }
