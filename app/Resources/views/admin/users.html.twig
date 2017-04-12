@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+    <div class="container body-content">
+        <div class="well">
+            <h2>All Users
+            <div class="pull-right">
+                <a class="btn btn-default" href="{{ path('admin_panel') }}"><< Admin Panel</a>
+            </div>
+            </h2>
+            <div class="row">
+                <table class="table table-striped table-hover ">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+
+                        <tr>
+                        <tr {% if user.isFullAdmin() %}class="danger" {% endif %}{% if user.isAdmin()%} class="info" {% endif %} {% if app.user.isEditor() %}class="warning" {% endif %}>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.fullName }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <a href="{{ path('admin_user_edit' , {'id':user.id}) }}">Edit</a>
+                                <a href="#">Delete</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
