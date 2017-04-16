@@ -19,6 +19,8 @@ class HomeController extends Controller
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
-        return $this->render('blog/index.html.twig', ['articles' => $articles]);
+        return $this->render('blog/index.html.twig', [
+            'articles' => $articles,
+        ]);
     }
 }

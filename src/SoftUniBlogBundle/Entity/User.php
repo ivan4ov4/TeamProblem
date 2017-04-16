@@ -227,14 +227,14 @@ class User implements UserInterface
         return in_array("ROLE_EDITOR", $this->getRoles());
     }
     public function isFullAdmin(){
-        return in_array("ROLE_FULLADMIN", $this->getRoles());
+        return in_array("ROLE_HEADADMIN", $this->getRoles());
     }
     function __toString()
     {
         return $this->fullName;
     }
     /**
-     * @param  $roles
+     * @param  array $roles
      * @return $this
      */
     public function setRoles(array $roles){

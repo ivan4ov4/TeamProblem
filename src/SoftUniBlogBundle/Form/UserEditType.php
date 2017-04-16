@@ -20,7 +20,7 @@ class UserEditType extends UserType
                 'User' => 'ROLE_USER',
             ],
             'expanded'=>true,
-            'multiple'=>false,
+            'multiple'=>true,
         ]);
     }
 }

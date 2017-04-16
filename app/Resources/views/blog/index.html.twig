@@ -3,28 +3,26 @@
 {% block main %}
     <div class="container body-content">
         <div class="row">
-            {% for article in articles %}
-                <div class="col-md-6">
-                    <article>
-                        <header>
-                            <h2>{{ article.title }}</h2>
-                        </header>
+            {% for article in articles |reverse %}
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <!-- <div class="panel-heading"><h5> { article.title }}</h5></div> -->
+                    <div class="panel-heading"><h5><a href="{{ path('article_view', {'id': article.id}) }}" ><font color="#ffffff">{{ article.title }}</font></a></h5></div>
+                    <div class="panel-body"><h6>{{ article.summary }}</h6></div>
 
-                        <p>
-                            {{ article.summary }}
-                        </p>
-
-                        <small class="author">
-                            {{ article.author }}
-                        </small>
-
-                        <footer>
+                            <div class="panel-footer">
+                                <small class="author">
+                                    Date:  Author: {{ article.author }}
+                                </small>
                             <div class="pull-right">
-                                <a class="btn btn-default btn-xs"
-                                   href="{{ path('article_view', {'id': article.id}) }}">Read more &raquo;</a>
+                                <a class="btn  btn-default btn-xs"
+                                   href="{{ path('article_view',
+                                   {'id': article.id}) }}">Read more &raquo;</a>
                             </div>
-                        </footer>
+
+                    </div>
                     </article>
+                </div>
                 </div>
             {% endfor %}
         </div>

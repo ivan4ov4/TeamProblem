@@ -9,12 +9,14 @@
 namespace SoftUniBlogBundle\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use SoftUniBlogBundle\Entity\Role;
 use SoftUniBlogBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use SoftUniBlogBundle\Entity\User;
 use SoftUniBlogBundle\Form\UserEditType;
 use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Validator\Constraints as Assert;
+use \Symfony\Component\HttpFoundation\Response;
 
 /**
  * @Route("/admin")
@@ -44,16 +46,53 @@ class AdminUserController extends Controller
      * @Route("/edit/{id}", name="admin_user_edit")
      *
      * @param $id
-     *
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editUser($id){
+    public function editUser($id, Request $request){
         $user = $this->getDoctrine()->getRepository(User::class)->find($id);
 
         if($user === null){
             return $this->redirectToRoute("admin_panel");
         }
+
+        $origPass = $user->getPassword();
+
         $form = $this->createForm(UserEditType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && isValid()){
+
+            //roles
+            $rolesRequest = $user->getRoles();
+            $rolesRepository =$this->getDoctrine()->getRepository(Role::class);
+            $roles= [];
+
+            foreach ($rolesRequest as $roleName){
+                $roles[] = $rolesRepository->findOneBy(['name' => $roleName]);
+            }
+
+            $user->setRoles($roles);
+            // end roles
+
+            //password
+            if ($user->getPassword()){
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $user->getPassword());
+                $user->setPassword();
+            }
+            else{
+                $user->setPassword($origPass);
+            }
+            //end password
+
+            $em = $this->getDoctrine()->getEntityManager();
+            $em->persist();
+            $em->flush();
+
+            return $this->redirectToRoute('admin_list_users');
+        }
 
         return $this->render('admin/editUser.html.twig', [
             'user' => $user,
@@ -66,6 +105,29 @@ class AdminUserController extends Controller
         $articles = $this->getDoctrine()->getRepository(ArticleType::class)->findAll();
 
         return $this->render('admin/articles.html.twig', ['users' => $articles]);
+    }
+
+    /**
+     * @Route("/delete/{id}", name="admin_user_delete")
+     *
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     *
+     */
+    public function deleteUser($id, Request $request){
+        $user =$this->getDoctrine()->getRepository(User::class)->find($id);
+
+        if($user === null){
+            return $this->redirectToRoute('admin_list_users');
+        }
+
+        $form = $this->createForm(UserEditType::class, $user);
+
+        return $this->render('admin/deleteUser.html.twig', [
+            'user' =>$user,
+            'form' => $form->createView()
+        ]);
     }
 
 }
