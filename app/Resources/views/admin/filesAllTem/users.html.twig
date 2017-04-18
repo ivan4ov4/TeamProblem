@@ -6,7 +6,7 @@
         <div class="well">
             <h2>All Users
             <div class="pull-right">
-                <a class="btn btn-default" href="{{ path('admin_panel') }}"><< Admin Panel</a>
+                <a class="btn btn-default" href="{{ path('admin_users_all') }}"><< Admin Panel</a>
             </div>
             </h2>
             <ul class="nav nav-tabs">
@@ -36,7 +36,7 @@
                                     <td>{{ user.fullName }}</td>
                                     <td>{{ user.email }}</td>
                                     <td><a class="btn btn-success btn-xs" href="{{ path('admin_user_edit' , {'id':user.id}) }}">Edit</a></td>
-                                    <td><a href="#">Delete</a></td>
+                                    <td><a class="btn btn-danger btn-xs" href="{{ path('admin_user_delete' , {'id':user.id}) }}">Delete</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -60,12 +60,16 @@
                             {% for user in users %}
 
                                 <tr>
-                                <tr {% if user.isFullAdmin() %}class="danger" {% elseif user.isAdmin()%} class="info" {% elseif  app.user.isEditor() %}class="warning" {% endif %}>
+                                <tr
+                                    {% if user.isFullAdmin() %}class="danger"
+                                    {% elseif user.isAdmin()%} class="info"
+                                    {% elseif  user.isEditor() %}class="warning"
+                                    {% endif %}>
                                     <td>{{ user.id }}</td>
                                     <td>{{ user.fullName }}</td>
                                     <td>{{ user.email }}</td>
-                                    <td><a class="btn btn-success btn-xs" href="{{ path('admin_user_edit' , {'id':user.id}) }}">Edit</a></td>
-                                    <td><a href="#">Delete</a></td>
+                                    <td><a class="btn btn-success btn-xs" href="{{ path('admin_user_edit' , {id:user.id}) }}">Edit</a></td>
+                                    <td><a class="btn btn-danger btn-xs" href="{{ path('admin_user_delete' , {id:user.id}) }}">Delete</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

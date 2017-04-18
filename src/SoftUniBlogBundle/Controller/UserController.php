@@ -1,12 +1,11 @@
 <?php
 namespace SoftUniBlogBundle\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use SoftUniBlogBundle\Entity\User;
 use SoftUniBlogBundle\Entity\Role;
 use SoftUniBlogBundle\Form\UserType;
-use SoftUniBlogBundle\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
@@ -43,6 +42,8 @@ class UserController extends Controller
             array('form' => $form->createView())
         );
     }
+
+
     /**
      * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @Route("/profile", name="user_profile")
@@ -50,7 +51,7 @@ class UserController extends Controller
     public function profileAction()
     {
         $user = $this->getUser();
-        $role = $this->get(User::class)->getRoles();
+
         return $this->render("user/profile.html.twig", [
             'user'=>$user
         ]);

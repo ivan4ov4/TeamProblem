@@ -1,0 +1,28 @@
+{% extends 'base.html.twig'  %}
+
+{% block main %}
+
+    <table class="table table-stripped table-hover">
+           <thead>
+           <tr>
+               <th>Id</th>
+               <th>Email</th>
+               <th>Full name</th>
+               <th>Edit</th>
+               <th>Delete</th>
+           </tr>
+           </thead>
+            <tbody>
+            {% for user in users %}
+                <td>{{ user.id }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.fullName }}</td>
+                <td><a class="btn btn-xs btn-success" href="{{ path('admin_user_edit' , {id: user.id}) }}">Edit</a></td>
+                <td><a class="btn btn-xs btn-danger">Delete</a></td>
+                </tbody>
+
+            {% endfor %}
+            </tbody>
+    </table>
+
+{% endblock %}
