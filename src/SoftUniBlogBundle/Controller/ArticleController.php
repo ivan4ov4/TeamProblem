@@ -32,6 +32,8 @@ class ArticleController extends Controller
         return $this->render('article/create.html.twig',
             array('form' => $form->createView()));
     }
+
+
     /**
      * @Route("/article/{id}", name="article_view")
      * @param $id

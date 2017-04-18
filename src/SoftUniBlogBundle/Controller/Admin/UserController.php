@@ -108,6 +108,11 @@ class UserController extends Controller
 
         if($form->isValid()){
             $em=$this->getDoctrine()->getManager();
+
+            foreach ($user->getArticles() as $article){
+                $em->remove($article);
+            }
+
             $em->remove($user);
             $em->flush();
 
@@ -120,6 +125,5 @@ class UserController extends Controller
         ]);
 
     }
-
 
 }
