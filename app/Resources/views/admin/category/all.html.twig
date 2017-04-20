@@ -1,0 +1,33 @@
+{% extends 'base.html.twig'  %}
+
+{% block main %}
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><h3>Users</h3></div>
+    <div class="panel-body">
+        <table class="table table-stripped table-hover">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for category in categories %}
+
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td><a class="btn btn-success btn-xs" href="{{ path('admin_category_edit' , {id:category.id}) }}">Edit</a></td>
+                    <td><a class="btn btn-danger btn-xs" href="{{ path('admin_category_delete' , {id:category.id}) }}">Delete</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}
