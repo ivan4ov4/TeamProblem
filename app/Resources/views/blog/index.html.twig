@@ -12,7 +12,7 @@
 
                             <div class="panel-footer">
                                 <small class="author">
-                                    Date:  Author: {{ article.author }}
+                                    Date: {{ article.dateAdded |date('Y-m-d H:i:s') }}  Author: {{ article.author }}
                                 </small>
                             <div class="pull-right">
                                 <a class="btn  btn-default btn-xs"

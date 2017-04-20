@@ -13,7 +13,7 @@ class UserEditType extends UserType
         parent::buildForm($builder, $options);
         $builder->add('roles', ChoiceType::class,[
             'choices'=>[
-                'HeadAmin' => 'ROLE_HEADADMIN',
+             //   'HeadAmin' => 'ROLE_HEADADMIN',
                 'Admin'=> 'ROLE_ADMIN',
                 'Editor' => 'ROLE_EDITOR',
                 'User' => 'ROLE_USER',

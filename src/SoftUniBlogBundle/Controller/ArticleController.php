@@ -67,7 +67,7 @@ class ArticleController extends Controller
         }
 
         $currentUser = $this->getUser();
-        if(!$currentUser->isAuthor($article) && !$currentUser->isAdmin()){
+        if(!$currentUser->isAuthor($article) && !$currentUser->isAdmin() && !$currentUser->isEditor()){
             return $this->redirectToRoute('blog_index');
         }
 
@@ -109,9 +109,9 @@ class ArticleController extends Controller
             return $this->redirectToRoute("blog_index");
         }
 
-        $curentUser = $this->getUser();
+        $currentUser = $this->getUser();
 
-        if(!$curentUser->isAuthor($article) && !$curentUser->isAdmin()){
+        if(!$currentUser->isAuthor($article) && !$currentUser->isAdmin()  && !$currentUser->isEditor()){
             return $this->redirectToRoute('blog_index');
         }
 
