@@ -23,9 +23,11 @@ class ArticleController extends Controller
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+           // var_dump($form);exit;
             $article->setAuthor($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($article);
+           // var_dump($article);exit;
             $em->flush();
             return $this->redirectToRoute('blog_index');
         }

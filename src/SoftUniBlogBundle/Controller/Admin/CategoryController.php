@@ -12,6 +12,7 @@ namespace SoftUniBlogBundle\Controller\Admin;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use SoftUniBlogBundle\Entity\Category;
 use SoftUniBlogBundle\Entity\User;
+use SoftUniBlogBundle\Form\CategoryType;
 use SoftUniBlogBundle\Form\UserEditType;
 use SoftUniBlogBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,6 +41,7 @@ class CategoryController extends Controller
     /**
      * @Route("/edit/{id}", name="admin_category_edit")
      * @param $id
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction($id, Request $request){
@@ -47,16 +49,18 @@ class CategoryController extends Controller
         $category =$this->getDoctrine()->getRepository(Category::class)->find($id);
 
         if($category === null){
-            return $this->redirectToRoute("admin_users_all");
+            return $this->redirectToRoute("admin_category_all");
         }
 
         $form=$this->createForm(CategoryType::class, $category);
 
         $form->handleRequest($request);
 
+            //var_dump($request);exit;
          if($form->isValid()){
              $em =$this->getDoctrine()->getManager();
              $em->persist($category);
+            // var_dump($category);exit;
              $em->flush();
 
              return $this->redirectToRoute("admin_category_all");
@@ -76,33 +80,58 @@ class CategoryController extends Controller
      */
     public function deleteAction($id, Request $request){
 
-        $user =$this->getDoctrine()->getRepository(User::class)->find($id);
+        $category =$this->getDoctrine()->getRepository(Category::class)->find($id);
 
-        if($user === null){
-            return $this->redirectToRoute("admin_users_all");
+        if($category === null){
+            return $this->redirectToRoute("admin_category_all");
         }
 
-        $form = $this->createForm(UserType::class,$user);
+        $form=$this->createForm(CategoryType::class, $category);
 
         $form->handleRequest($request);
 
         if($form->isValid()){
-            $em=$this->getDoctrine()->getManager();
-
-            foreach ($user->getArticles() as $article){
-                $em->remove($article);
-            }
-
-            $em->remove($user);
+            $em =$this->getDoctrine()->getManager();
+            $em->remove($category);
             $em->flush();
 
-            return $this->redirectToRoute("admin_users_all");
+            return $this->redirectToRoute("admin_category_all");
         }
 
-        return $this->render("admin/user/delete.html.twig",[
-            'form' =>$form->createView(),
-            'user' => $user
+        return $this->render("admin/category/delete.html.twig",[
+            'form' => $form->createView(),
+            'category' => $category
         ]);
+    }
+
+
+
+
+    /**
+     * @Route("/create", name="admin_category_create")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function createAction(Request $request){
+
+        $category = new Category();
+        $form = $this->createForm(CategoryType::class, $category);
+        $form->handleRequest($request);
+        if($form->isValid()){
+            //var_dump($form);exit;
+            $em= $this->getDoctrine()->getManager();
+            $em ->persist($category);
+            //var_dump($category); exit;
+            $em->flush();
+
+            return $this->redirectToRoute("admin_category_all");
+        }
+
+        return $this->render("admin/category/create.html.twig",[
+            'form' => $form->createView(),
+            'category' => $category
+        ]);
+
 
     }
 
