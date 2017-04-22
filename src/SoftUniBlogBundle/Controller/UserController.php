@@ -51,9 +51,21 @@ class UserController extends Controller
     public function profileAction()
     {
         $user = $this->getUser();
+        $roles = [];
+        $roleRepo = $this->getDoctrine()->getRepository(\SoftUniBlogBundle\Entity\Role::class);
+        foreach ($user->getRoles() as $roleName){
+            $roles[] = $roleRepo->findOneBy(
+                [
+                    'name'=> $roleName
+                ]
+            );
+            $user->setRoles($roles);
+        }
+
 
         return $this->render("user/profile.html.twig", [
-            'user'=>$user
+            'user'=>$user,
+            'roles' =>$roles
         ]);
     }
 }

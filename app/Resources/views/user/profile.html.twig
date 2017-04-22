@@ -3,19 +3,26 @@
 {% block body_id 'profile' %}
 
 {% block main %}
-<div class="panel panel-default">
-    <ul class="list-group">
-        <li class="list-group-item">
-            E-mail: {{ user.Email }}
-        </li>
-        <li class="list-group-item">
-           Full name: {{ user.fullname }}
-        </li>
-        <li class="list-group-item">
-            My type
-        </li>
-    </ul>
-</div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+            <div class="panel panel-default">
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        E-mail: {{ user.Email }}
+                    </li>
+                    <li class="list-group-item">
+                       Full name: {{ user.fullname }}
+                    </li>
+                    <li class="list-group-item">
+                        My type:
+                        {% for rols in roles %}
+                            <ul>{{ rols.role }}</ul>
+                        {% endfor %}
+                    </li>
+                </ul>
+            </div>
+    </div>
+
 
 
 {% endblock %}

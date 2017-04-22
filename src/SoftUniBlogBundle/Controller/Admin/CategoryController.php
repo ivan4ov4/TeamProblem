@@ -38,39 +38,45 @@ class CategoryController extends Controller
             ]);
     }
 
+
     /**
      * @Route("/edit/{id}", name="admin_category_edit")
      * @param $id
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function editAction($id, Request $request){
+    public function editArticle($id, Request $request){
 
-        $category =$this->getDoctrine()->getRepository(Category::class)->find($id);
-
+        $category = $this->getDoctrine()->getRepository(Category::class)->find($id);
+        //var_dump($category);exit;
         if($category === null){
             return $this->redirectToRoute("admin_category_all");
         }
 
-        $form=$this->createForm(CategoryType::class, $category);
+        $form = $this->createForm(CategoryType::class, $category);
 
+        //var_dump($request);exit;
         $form->handleRequest($request);
 
-            //var_dump($request);exit;
-         if($form->isValid()){
-             $em =$this->getDoctrine()->getManager();
-             $em->persist($category);
-            // var_dump($category);exit;
-             $em->flush();
+        if($form->isSubmitted() && $form -> isValid()){
 
-             return $this->redirectToRoute("admin_category_all");
-         }
+            $data = $this->getDoctrine()->getManager();
+            $data->persist($category);
+            var_dump($category);exit;
+            $data->flush();
 
-        return $this->render("admin/category/edit.html.twig",[
-            'form' => $form->createView(),
-            'category' => $category
-        ]);
+            return $this->redirectToRoute('admin_category_all', [
+                    'id' => $category->getId()]
+            );
+        }
+
+        return $this->render('admin/category/edit.html.twig',[
+            'category' => $category,
+            'form' => $form->createView()]);
     }
+
+
+
 
     /**
      * @Route("/delete/{id}", name="admin_category_delete")
@@ -110,28 +116,25 @@ class CategoryController extends Controller
     /**
      * @Route("/create", name="admin_category_create")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function createAction(Request $request){
 
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-        if($form->isValid()){
-            //var_dump($form);exit;
-            $em= $this->getDoctrine()->getManager();
-            $em ->persist($category);
-            //var_dump($category); exit;
+
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($category);
+            var_dump($category);exit;
             $em->flush();
 
-            return $this->redirectToRoute("admin_category_all");
+            return $this->redirectToRoute('admin_category_all');
         }
 
-        return $this->render("admin/category/create.html.twig",[
-            'form' => $form->createView(),
-            'category' => $category
-        ]);
-
+        return $this->render('admin/category/create.html.twig',
+            ['form' => $form->createView()]);
 
     }
 

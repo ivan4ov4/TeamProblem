@@ -227,5 +227,6 @@ class Article
     {
         return $this->dateAdded;
     }
+
 }
 
