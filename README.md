@@ -73,7 +73,7 @@ Techologies using for this project is PHP and his MVC (Symfony).
  
  If php responce this.
  
- ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture.PNG)
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture1234.PNG)
  
  PHP work successfully.
  
