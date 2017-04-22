@@ -100,7 +100,15 @@ Techologies using for this project is PHP and his MVC (Symfony).
   C:\..dir..\TeamProblem>php bin/console server:run
  ````
 ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture6.PNG)
-#### Step 6: Add user roles
+### Add user roles
+Start HeidiSql and connect to database.
+Create query to base with qery tab.
+![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture01.PNG)
+Click `F9` to execute query
+![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture02.PNG)
+
+
+
  
  
  
