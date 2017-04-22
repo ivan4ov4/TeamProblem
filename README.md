@@ -82,20 +82,25 @@ Techologies using for this project is PHP and his MVC (Symfony).
  ````
  C:\..dir..\TeamProblem>php composer.phar install
  ````
- #### Step 2: Replase `parameters.yml`on this file [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture2.PNG)
+ #### Step 2: Replase `parameters.yml`on this file on `app/config` [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture3.PNG)
  #### Step 3: Create database.
  ````
   C:\..dir..\TeamProblem>php bin/console doctrine:database:create
  ````
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture4.PNG)
  #### Step 4: Update database.
  ````
   C:\..dir..\TeamProblem>php bin/console doctrine:schema:update --force
  ````
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture5.PNG)
  #### Step 5: Start server.
  ```` 
   C:\..dir..\TeamProblem>php bin/console server:run
  ````
- #### Step 6: Add user roles
+![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture6.PNG)
+#### Step 6: Add user roles
  
  
  
