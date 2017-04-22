@@ -1,39 +1,53 @@
 # TeamProblem
-SoftUni Team Project and defence
- 
- Info about project 
- A blog based on PHP and using Symfony MVC.  
- 
- Team members 
-  Ivan Simeonov - ivan4ov4
-  Daniel Vasilev - DanielVasilev98
- 
- Technologie is used 
-  PHP
-  Symfony MVC 
- 
- Site map  
+This is priject for Software Univursity, module Software Techologies - defance.
+Techologies using for this project is PHP and his MVC (Symfony).
 
- / - view all posts
+
+### Team members 
+  * Ivan Simeonov - ivan4ov4
+  * Daniel Vasilev - DanielVasilev98
  
- /register - register new user
+### Site map  
+
+* / - view all posts
  
- /login    - login register user 
+* /register - register new user
  
- /logout   - logout login user
+* /login    - login register user 
  
- /profile  - view user info
+* /logout   - logout login user
  
- /article/{id} - view article id 
+* /profile  - view user info
  
- /article/create  - create article
+* /article/{id} - view article id 
  
- /article/edit/{id} - edit article id 
+* /article/create  - create article
  
- /article/delete/{id} - delete artile id
+* /article/edit/{id} - edit article id 
+ 
+* /article/delete/{id} - delete artile id
+ 
+* /admin/panel/ - view admin panel
+
+* /admin/user/ - view all registered users
+
+* /admin/user/edit/{id} - edit user by id
+
+* /admin/user/delete/{id} - delete user by id
+
+* /admin/category/ - view all categories 
+
+* /admin/category/create - create new category
+
+* /admin/category/edit/{id} - edit category by id 
+
+* /admin/category/delete/{id} - delete category bt id
+
+* /edit/articles/ - view all articles 
+ 
+ ### Using reources
  
  
- Using reources
  -PHP: Blog Basic Functionality: https://softuni.bg/trainings/resources/video/13416/video-screen-14-march-2017-vladimir-damyanovski-software-technologies-february-2017
  
  -PHP: Blog Admin Functionality: https://softuni.bg/trainings/resources/video/13449/video-screen-15-march-2017-ivaylo-kenov-software-technologies-february-2017
@@ -41,36 +55,11 @@ SoftUni Team Project and defence
  -PHP: Blog Advanced Functionality: https://softuni.bg/trainings/resources/video/11027/video-screen-07-november-2016-ivan-yonkov-software-technologies-october-2016
  
  
+ ## How to install this project for develop
+ #### Tip: This steps are for windows machine
+ 
+ ## Preparation for install project
  
  
- Blog
-
-Design and implement a simple blog system.
-
-Required functionalities:
-
- User registration (and optionally user profiles) / login / logout.
-
- View all posts (optionally with paging), without login.
-
- Create new post by the blog owner (after login). Optionally, each post may have tags.
-
-Optional functionalities:
-
-© Software University Foundation (softuni.org). This work is licensed under the CC-BY- NC-SA license.
-
-Follow us: Page 5 of 5
-
- Add comments for every post by visitors – each visitor must fill out his name, email (optionally) and
-
-comment text.
-
- Implement a sidebar holding a list of posts sorted by month / year / etc. and a list of the most popular tags.
-
- Counter of visits for each post.
-
- Functionality for searching by tags.
-
- Admin panel: add / edit / delete posts, comments, tags, etc.
  
  
