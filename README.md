@@ -60,6 +60,43 @@ Techologies using for this project is PHP and his MVC (Symfony).
  
  ## Preparation for install project
  
+ ##### Step 1: Download this repository. 
+ ##### Step 2: You need to xampp for install this project. Clik [here](https://www.apachefriends.org/download.html) to download.
+ ##### Step 3: Install HeidiSQL. Clik [here](https://www.heidisql.com/download.php) to download.
+ 
+ ## Project instalation
+ Open `cmd`on project directory. To fast open clik `control` + `shift` + `right mouse button` and find `open command window here`.
+ #### Chek you PHP.
+ ````
+ C:\..dir..\TeamProblem>php -v
+ ````
+ 
+ If php responce this.
+ 
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture.PNG)
+ 
+ PHP work successfully.
+ 
+ ### Install project
+ #### Step 1: Install doctrine and symfony tools. 
+ ````
+ C:\..dir..\TeamProblem>php composer.phar install
+ ````
+ #### Step 2: Replase `parameters.yml`on this file [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
+ #### Step 3: Create database.
+ ````
+  C:\..dir..\TeamProblem>php bin/console doctrine:database:create
+ ````
+ #### Step 4: Update database.
+ ````
+  C:\..dir..\TeamProblem>php bin/console doctrine:schema:update --force
+ ````
+ #### Step 5: Start server.
+ ```` 
+  C:\..dir..\TeamProblem>php bin/console server:run
+ ````
+ #### Step 6: Add user roles
+ 
  
  
  
