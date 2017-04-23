@@ -3,7 +3,11 @@
 {% block main %}
 
     <div class="panel panel-default">
-    <div class="panel-heading"><h3>Categories <div class="pull-right"><a class="btn btn-primary" href="{{ path('admin_category_create') }}">Create Category</a></div>
+    <div class="panel-heading"><h3>Categories
+            <div class="pull-right">
+                <a class="btn btn-default btn-default" href="{{ path('admin_panel_view') }}"><< Admin panel</a>
+                <a class="btn btn-primary" href="{{ path('admin_category_create') }}">Create Category</a>
+            </div>
         </h3>
 
     </div>
