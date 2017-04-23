@@ -73,7 +73,7 @@ Techologies using for this project is PHP and his MVC (Symfony).
  
  If php responce this.
  
- ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture1234.PNG)
+ ![Chec you PHP](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture1234.PNG)
  
  PHP work successfully.
  
@@ -84,28 +84,28 @@ Techologies using for this project is PHP and his MVC (Symfony).
  ````
  ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture2.PNG)
  #### Step 2: Replase `parameters.yml`on this file on `app/config` [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
- ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture3.PNG)
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture3.PNG)
  #### Step 3: Create database.
  ````
   C:\..dir..\TeamProblem>php bin/console doctrine:database:create
  ````
- ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture4.PNG)
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture4.PNG)
  #### Step 4: Update database.
  ````
   C:\..dir..\TeamProblem>php bin/console doctrine:schema:update --force
  ````
- ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture5.PNG)
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture5.PNG)
  #### Step 5: Start server.
  ```` 
   C:\..dir..\TeamProblem>php bin/console server:run
  ````
-![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture6.PNG)
+![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture6.PNG)
 ### Add user roles
 Start HeidiSql and connect to database.
-Create [query](https://github.com/ivan4ov4/TeamProblem/blob/master/query.sql)  to base with qery tab.
-![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture01.PNG)
+Create [query](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/query.sql)  to base with qery tab.
+![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture01.PNG)
 Click `F9` to execute query.
-![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture02.PNG)
+![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture02.PNG)
 
 Go to [localhost:8000](http://localhost:8000) and register new user.
 Open HeidiSQL and change you user type. After register first admin user you will be able to change the type of all registered users from admin panel.
