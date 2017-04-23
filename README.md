@@ -48,11 +48,11 @@ Techologies using for this project is PHP and his MVC (Symfony).
  ### Using reources
  
  
- -PHP: Blog Basic Functionality: https://softuni.bg/trainings/resources/video/13416/video-screen-14-march-2017-vladimir-damyanovski-software-technologies-february-2017
+ * [PHP: Blog Basic Functionality](https://softuni.bg/trainings/resources/video/13416/video-screen-14-march-2017-vladimir-damyanovski-software-technologies-february-2017)
  
- -PHP: Blog Admin Functionality: https://softuni.bg/trainings/resources/video/13449/video-screen-15-march-2017-ivaylo-kenov-software-technologies-february-2017
+ * [PHP: Blog Admin Functionality](https://softuni.bg/trainings/resources/video/13449/video-screen-15-march-2017-ivaylo-kenov-software-technologies-february-2017)
  
- -PHP: Blog Advanced Functionality: https://softuni.bg/trainings/resources/video/11027/video-screen-07-november-2016-ivan-yonkov-software-technologies-october-2016
+ * [PHP: Blog Advanced Functionality](https://softuni.bg/trainings/resources/video/11027/video-screen-07-november-2016-ivan-yonkov-software-technologies-october-2016)
  
  
  ## How to install this project for develop
@@ -102,10 +102,34 @@ Techologies using for this project is PHP and his MVC (Symfony).
 ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture6.PNG)
 ### Add user roles
 Start HeidiSql and connect to database.
-Create query to base with qery tab.
+Create [query](https://github.com/ivan4ov4/TeamProblem/blob/master/query.sql)  to base with qery tab.
 ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture01.PNG)
-Click `F9` to execute query
+Click `F9` to execute query.
 ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture02.PNG)
+
+Go to [localhost:8000](http://localhost:8000) and register new user.
+Open HeidiSQL and change you user type. After register first admin user you will be able to change the type of all registered users from admin panel.
+
+![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture03.PNG)
+
+Change to admin role.
+
+![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture04.PNG)
+
+Result on web page.
+
+![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture05.PNG)
+
+Change to editor role 
+
+![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture06.PNG)
+
+Result to editor role
+
+![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture07.PNG)
+
+#### Enjoy.
+
 
 
 
