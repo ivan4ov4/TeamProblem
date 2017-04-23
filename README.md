@@ -82,7 +82,7 @@ Techologies using for this project is PHP and his MVC (Symfony).
  ````
  C:\..dir..\TeamProblem>php composer.phar install
  ````
- ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/Capture2.PNG)
+ ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture2.PNG)
  #### Step 2: Replase `parameters.yml`on this file on `app/config` [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
  ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture3.PNG)
  #### Step 3: Create database.
