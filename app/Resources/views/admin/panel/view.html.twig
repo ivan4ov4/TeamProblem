@@ -2,80 +2,70 @@
 
 {% block body %}
 
-    <div class="well-lg">
+    <div class="well">
+        <h1>Admin panel</h1>
+        <hr>
+
+        <div class="col-md-4">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h2>Admin panel</h2>
+                <div class="panel-heading"><h4>Users</h4></div>
+                <div class="panel-body">
+                    <h5>View all users</h5>
                 </div>
-                    <div class="panel-body">
-
-                        <div class="col-md-4">
-                            <div class="pane panel-default">
-                                    <div class="panel-heading">
-                                       <a href="{{ path('admin_users_all')}}"><h3>View all users</h3></a>
-                                    </div>
-                                <div class="panel-body">
-                                    <h4>View all users</h4>
-                                </div>
-
-                                <div class="panel-footer"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="pane panel-default">
-                                <div class="panel-heading">
-                                    <a href="{{ path('edit_article_all')}}"><h3>View all articles</h3></a>
-                                </div>
-                                <div class="panel-body">
-                                    <h4>View all articles</h4>
-                                </div>
-
-                                <div class="panel-footer"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="pane panel-default">
-                                <div class="panel-heading">
-                                    <a href="{{ path('admin_category_all')}}"><h3>View all categories</h3></a>
-                                </div>
-                                <div class="panel-body">
-                                    <h4>View all categories</h4>
-                                </div>
-
-                                <div class="panel-footer"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="pane panel-default">
-                                <div class="panel-heading">
-                                    <a href="{{ path('admin_category_create')}}"><h3>Create categories</h3></a>
-                                </div>
-                                <div class="panel-body">
-                                    <h4>Create categories</h4>
-                                </div>
-
-                                <div class="panel-footer"></div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="pane panel-default">
-                                <div class="panel-heading">
-                                    <a href="{{ path('user_register')}}"><h3>Register user</h3></a>
-                                </div>
-                                <div class="panel-body">
-                                    <h4>Register new user</h4>
-                                </div>
-
-                                <div class="panel-footer"></div>
-                            </div>
-                        </div>
-
-
-                    </div>
+                <div class="panel-footer">
+                   <a class="btn btn-default btn-sm" href="{{ path('admin_users_all') }}">Go>></a>
+                </div>
             </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Articles</h4></div>
+                <div class="panel-body">
+                    <h5>View all articles</h5>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default btn-sm" href="{{ path('edit_article_all') }}">Go>></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Categories</h4></div>
+                <div class="panel-body">
+                    <h5>View all categories</h5>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default btn-sm" href="{{ path('admin_category_all') }}">Go>></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Create categories</h4></div>
+                <div class="panel-body">
+                    <h5>Create categories</h5>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default btn-sm" href="{{ path('admin_category_create') }}">Go>></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h4>Register user</h4></div>
+                <div class="panel-body">
+                    <h5>Register new user</h5>
+                </div>
+                <div class="panel-footer">
+                    <a class="btn btn-default btn-sm" href="{{ path('user_register') }}">Go>></a>
+                </div>
+            </div>
+        </div>
+
     </div>
-    {% endblock%}
+
+{% endblock%}
