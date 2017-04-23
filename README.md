@@ -1,6 +1,6 @@
 # TeamProblem
-This is priject for Software Univursity, module Software Techologies - defance.
-Techologies using for this project is PHP and his MVC (Symfony).
+This project is for Software University, module Software Techologies - defence.
+Techologies used for this project are PHP and his MVC (Symfony).
 
 
 ### Team members 
@@ -19,13 +19,13 @@ Techologies using for this project is PHP and his MVC (Symfony).
  
 * /profile  - view user info
  
-* /article/{id} - view article id 
+* /article/{id} - view article by id 
  
 * /article/create  - create article
  
-* /article/edit/{id} - edit article id 
+* /article/edit/{id} - edit article by id 
  
-* /article/delete/{id} - delete artile id
+* /article/delete/{id} - delete artile by id
  
 * /admin/panel/ - view admin panel
 
@@ -41,11 +41,11 @@ Techologies using for this project is PHP and his MVC (Symfony).
 
 * /admin/category/edit/{id} - edit category by id 
 
-* /admin/category/delete/{id} - delete category bt id
+* /admin/category/delete/{id} - delete category by id
 
 * /edit/articles/ - view all articles 
  
- ### Using reources
+ ### Using resources
  
  
  * [PHP: Blog Basic Functionality](https://softuni.bg/trainings/resources/video/13416/video-screen-14-march-2017-vladimir-damyanovski-software-technologies-february-2017)
@@ -55,13 +55,13 @@ Techologies using for this project is PHP and his MVC (Symfony).
  * [PHP: Blog Advanced Functionality](https://softuni.bg/trainings/resources/video/11027/video-screen-07-november-2016-ivan-yonkov-software-technologies-october-2016)
  
  
- ## How to install this project for develop
+ ## How to install this project and how you can change it?
  #### Tip: This steps are for windows machine
  
- ## Preparation for install project
+ ## Preparation for installing the project.
  
  ##### Step 1: Download this repository. 
- ##### Step 2: You need to xampp for install this project. Clik [here](https://www.apachefriends.org/download.html) to download.
+ ##### Step 2: You need to xampp to install this project. Clik [here](https://www.apachefriends.org/download.html) to download.
  ##### Step 3: Install HeidiSQL. Clik [here](https://www.heidisql.com/download.php) to download.
  
  ## Project instalation
@@ -83,7 +83,7 @@ Techologies using for this project is PHP and his MVC (Symfony).
  C:\..dir..\TeamProblem>php composer.phar install
  ````
  ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture2.PNG)
- #### Step 2: Replase `parameters.yml`on this file on `app/config` [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
+ #### Step 2: Replace `parameters.yml`on this file on `app/config` [parameters.yml](https://github.com/ivan4ov4/TeamProblem/blob/master/parameters.yml).
  ![Image for working php](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture3.PNG)
  #### Step 3: Create database.
  ````
@@ -112,7 +112,7 @@ Open HeidiSQL and change you user type. After register first admin user you will
 
 ![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture03.PNG)
 
-Change to admin role.
+Change user to admin role.
 
 ![Go to roles table](https://github.com/ivan4ov4/TeamProblem/blob/master/pic/Capture04.PNG)
 
