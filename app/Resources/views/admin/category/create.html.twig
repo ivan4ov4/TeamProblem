@@ -5,7 +5,11 @@
         <div class="well">
             <form class="form-horizontal" action="{{ path('admin_category_create') }}" method="POST">
                 <fieldset>
-                    <legend>New Category</legend>
+                    <legend>New Category
+                        <div class="pull-right">
+                            <a class="btn btn-default btn-sm" href="{{ path('admin_panel_view') }}"><< Admin panel</a>
+                        </div>
+                    </legend>
 
                     <div class="form-group">
                         <label class="col-sm-4 control-label" for="article_title">Category Name</label>

@@ -10,6 +10,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 class UserController extends Controller
 {
+
+
     /**
      * @Route("/register", name="user_register")
      * @param Request $request
@@ -45,18 +47,18 @@ class UserController extends Controller
 
 
     /**
-     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      * @Route("/profile", name="user_profile")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
      */
     public function profileAction()
     {
         $user = $this->getUser();
         $roles = [];
         $roleRepo = $this->getDoctrine()->getRepository(\SoftUniBlogBundle\Entity\Role::class);
-        foreach ($user->getRoles() as $roleName){
+        foreach ($user->getRoles() as $roleName) {
             $roles[] = $roleRepo->findOneBy(
                 [
-                    'name'=> $roleName
+                    'name' => $roleName
                 ]
             );
             $user->setRoles($roles);
@@ -64,8 +66,9 @@ class UserController extends Controller
 
 
         return $this->render("user/profile.html.twig", [
-            'user'=>$user,
-            'roles' =>$roles
+            'user' => $user,
+            'roles' => $roles
         ]);
     }
+
 }

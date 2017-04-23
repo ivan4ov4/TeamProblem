@@ -39,6 +39,7 @@ class CategoryController extends Controller
     }
 
 
+
     /**
      * @Route("/edit/{id}", name="admin_category_edit")
      * @param $id
