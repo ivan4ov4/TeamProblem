@@ -128,7 +128,7 @@ class CategoryController extends Controller
         if($form->isSubmitted() && $form->isValid()){
             $em=$this->getDoctrine()->getManager();
             $em->persist($category);
-            var_dump($category);exit;
+            //var_dump($category);exit;
             $em->flush();
 
             return $this->redirectToRoute('admin_category_all');
