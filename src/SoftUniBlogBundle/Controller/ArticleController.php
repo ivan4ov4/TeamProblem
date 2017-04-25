@@ -1,8 +1,10 @@
 <?php
 namespace SoftUniBlogBundle\Controller;
+use Doctrine\Common\Collections\ArrayCollection;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use SoftUniBlogBundle\Entity\Article;
+use SoftUniBlogBundle\Entity\Tag;
 use SoftUniBlogBundle\Form\ArticleType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +24,27 @@ class ArticleController extends Controller
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $tagsString = $request->get('tags');
+            $tags = explode(",", $tagsString);
+            $tagRepo = $this->getDoctrine()->getRepository(Tag::class);
+            $tagsToSave = new ArrayCollection();
+            foreach($tags as $tagName)
+            {
+                $tagName = trim($tagName);
+                $tag = $tagRepo->findOneBy(['name' => $tagName]);
+                if ($tag == null)
+                {
+
+                    $tag = new Tag();
+                    $tag->setName($tagName);
+                    $em->persist($tag);
+                }
+                $tagsToSave-> add($tag);
+            }
+            $article->setTags($tagsToSave);
            // var_dump($form);exit;
             $article->setAuthor($this->getUser());
             $em = $this->getDoctrine()->getManager();
