@@ -10,6 +10,11 @@
                     <div class="panel-heading"><h5><a href="{{ path('article_view', {'id': article.id}) }}" ><font color="#ffffff">{{ article.title }}</font></a></h5></div>
                     <div class="panel-body"><h6>{{ article.summary }}</h6></div>
 
+                    <p>
+                        {% for tag in article.tags %}
+                            <a class="btn btn-default btn-xs" href="{{ path('article_view', {'id':article.id}) }}">{{ tag.name }}</a>
+                        {% endfor %}
+                    </p>
                             <div class="panel-footer">
                                 <small class="author">
                                     Date: {{ article.dateAdded |date('Y-m-d') }}  Author: {{ article.author }}

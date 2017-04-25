@@ -2,7 +2,11 @@
 
 namespace SoftUniBlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\ORM\Mapping\JoinTable;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /**
  * Article
@@ -62,6 +66,16 @@ class Article
      */
     private $author;
 
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ManyToMany(targetEntity="SoftUniBlogBundle\Entity\Tag")
+     * @JoinTable(name="articles_tags",
+     *     joinColumns={@JoinColumn(name="article_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@JoinColumn(name="tag_id", referencedColumnName="id")})
+     */
+    private $tags;
     public function __construct()
     {
         $this->dateAdded = new \DateTime('now');
@@ -227,6 +241,17 @@ class Article
     {
         return $this->dateAdded;
     }
+    public function getTags()
+    {
+        return $this->tags;
+    }
 
+    /**
+     * @param ArrayCollection $tags
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+    }
 }
 
