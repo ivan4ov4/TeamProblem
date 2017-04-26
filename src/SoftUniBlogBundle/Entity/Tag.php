@@ -71,5 +71,22 @@ class Tag
     public function _toString(){
         return $this->name;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param ArrayCollection $articles
+     */
+    public function setArticles(ArrayCollection $articles)
+    {
+        $this->articles = $articles;
+    }
+
 }
 

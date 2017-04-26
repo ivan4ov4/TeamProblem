@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TagController extends Controller
 {
     /**
-     * @Route("/tags/{name}", name="articles_by_tag")
+     * @Route("/tags/{name}", name="articles_in_tag")
      * @param $name
      * @return \Symfony\Component\HttpFoundation\Response
      */
