@@ -67,5 +67,9 @@ class Tag
     {
         return $this->name;
     }
+
+    public function _toString(){
+        return $this->name;
+    }
 }
 

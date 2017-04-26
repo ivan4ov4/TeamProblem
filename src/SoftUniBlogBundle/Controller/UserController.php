@@ -5,6 +5,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use SoftUniBlogBundle\Entity\User;
 use SoftUniBlogBundle\Entity\Role;
+use SoftUniBlogBundle\Form\UserEditType;
 use SoftUniBlogBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -68,6 +69,59 @@ class UserController extends Controller
         return $this->render("user/profile.html.twig", [
             'user' => $user,
             'roles' => $roles
+        ]);
+    }
+
+    /**
+     * @Route("/profile/edit/{id}", name="user_profile_edit")
+     * @Security("is_granted('IS_AUTHENTICATED_FULLY')")
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function editProfile($id, Request $request){
+        $user =$this->getDoctrine()->getRepository(User::class)->find($id);
+
+        if($user === null){
+            return $this->redirectToRoute("admin_users_all");
+        }
+
+        $form=$this->createForm(UserEditType::class, $user);
+
+        $oldPassword = $user->getPassword();
+
+        $form->handleRequest($request);
+
+        if($form->isValid()){
+            if(empty($user->getPassword())){
+                $user->setPassword($oldPassword);
+            }else{
+                $password = $this->get('security.password_encoder')
+                    ->encodePassword($user, $user->getPassword());
+                $user->setPassword($password);
+            }
+
+            $roles = [];
+            $roleRepo = $this->getDoctrine()->getRepository(\SoftUniBlogBundle\Entity\Role::class);
+            foreach ($user->getRoles() as $roleName){
+                $roles[] = $roleRepo->findOneBy(
+                    [
+                        'name'=> $roleName
+                    ]
+                );
+                $user->setRoles($roles);
+            }
+
+            $em =$this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute("user_profile");
+        }
+
+        return $this->render("user/editProfile.html.twig",[
+            'form' => $form->createView(),
+            'user' => $user
         ]);
     }
 
