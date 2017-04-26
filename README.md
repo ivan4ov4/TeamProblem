@@ -44,6 +44,9 @@ Techologies used for this project are PHP and his MVC (Symfony).
 * /admin/category/delete/{id} - delete category by id
 
 * /edit/articles/ - view all articles 
+
+* /tags/{name} - view all articles with this tag 
+
  
  ### Using resources
  
