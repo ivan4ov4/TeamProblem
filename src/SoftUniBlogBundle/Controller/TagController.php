@@ -17,6 +17,6 @@ class TagController extends Controller
     {
         $tag = $this->getDoctrine()->getRepository(Tag::class)
             ->findOneBy(['name'=>$name]);
-        return $this->render('tags/articles.html.twig', array('tag' => $tag));
+        return $this->render('tags/articles.html.twig',['tag' => $tag]);
     }
 }

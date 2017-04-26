@@ -53,18 +53,14 @@ class CategoryController extends Controller
         if($category === null){
             return $this->redirectToRoute("admin_category_all");
         }
-
         $form = $this->createForm(CategoryType::class, $category);
-
-        //var_dump($request);exit;
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form -> isValid()){
-
-            $data = $this->getDoctrine()->getManager();
-            $data->persist($category);
-            var_dump($category);exit;
-            $data->flush();
+        if($form->isSubmitted() && $form->isValid()){
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($category);
+            //var_dump($category);exit;
+            $em->flush();
 
             return $this->redirectToRoute('admin_category_all', [
                     'id' => $category->getId()]

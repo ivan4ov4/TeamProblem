@@ -102,6 +102,25 @@ class ArticleController extends Controller
         if($form -> isSubmitted() && $form -> isValid()){
 
             $data = $this->getDoctrine()->getManager();
+            $tagsString = $request->get('tags');
+            $tags = explode(",", $tagsString);
+            $tagRepo = $this->getDoctrine()->getRepository(Tag::class);
+            $tagsToSave = new ArrayCollection();
+            foreach($tags as $tagName)
+            {
+                $tagName = trim($tagName);
+                $tag = $tagRepo->findOneBy(['name' => $tagName]);
+                if ($tag == null)
+                {
+
+                    $tag = new Tag();
+                    $tag->setName($tagName);
+                    $data->persist($tag);
+                }
+                $tagsToSave-> add($tag);
+            }
+
+
             $data->persist($article);
             $data->flush();
 

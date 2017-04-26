@@ -20,9 +20,4 @@ class CategoryType extends AbstractType
             'data_class' => 'SoftUniBlogBundle\Entity\Category',
         ));
     }
-
-    public function getBlockPrefix()
-    {
-        return 'soft_uni_blog_bundle_category';
-    }
 }
