@@ -13,18 +13,37 @@
 {% block body_id 'error' %}
 
 {% block main %}
-    <h1 class="text-danger">{{ 'http_error.name'|trans({ '%status_code%': 500 }) }}</h1>
+   {#<h1 class="text-danger">{{ 'http_error.name'|trans({ '%status_code%': 500 }) }}</h1>#}
 
-    <p class="lead">
-        {{ 'http_error_500.description'|trans }}
-    </p>
-    <p>
-        {{ 'http_error_500.suggestion'|trans({ '%url%': path('blog_index') })|raw }}
-    </p>
+   {#<p class="lead">#}
+        {#{ 'http_error_500.description'|trans }#}
+    {# </p>#}
+    {# <p>#}
+       {#{ 'http_error_500.suggestion'|trans({ '%url%': path('blog_index') })|raw }#}
+    {# </p>#}
+        <h1>Oooops. Error code 500. <br> Please try again later.</h1>
+
+    <p>You'll be automatically redirected in <span id="count">5</span> seconds...</p>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            (function(){
+                var counter = 4;
+                setInterval(function() {
+                    counter--;
+                    if (counter >= 0) {
+                        span = document.getElementById("count");
+                        span.innerHTML = counter;
+                    }
+                }, 1000);
+            })();
+        }
+    </script>
+    <meta http-equiv="refresh" content="10;{{ path('blog_index') }}" />
 {% endblock %}
 
 {% block sidebar %}
-    {{ parent() }}
+    {#}{ parent() }#}
 
-    {{ show_source_code(_self) }}
+    {#{ show_source_code(_self) }#}
 {% endblock %}

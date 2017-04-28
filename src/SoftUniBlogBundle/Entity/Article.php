@@ -70,7 +70,7 @@ class Article
     /**
      * @var ArrayCollection
      *
-     * @ManyToMany(targetEntity="SoftUniBlogBundle\Entity\Tag")
+     * @ManyToMany(targetEntity="SoftUniBlogBundle\Entity\Tag", inversedBy="articles")
      * @JoinTable(name="articles_tags",
      *     joinColumns={@JoinColumn(name="article_id", referencedColumnName="id")},
      *     inverseJoinColumns={@JoinColumn(name="tag_id", referencedColumnName="id")})

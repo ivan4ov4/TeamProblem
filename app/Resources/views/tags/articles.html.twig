@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block main %}
     <div class="container body-content">
-        <h1><font color="yellow">{{ tag.name }}</font></h1>
+        <h1><font color="#afbdd3">{{ tag.name }}</font></h1>
         <div class="row">
             {% for article in tag.articles %}
                 <div class="col=md-6">
@@ -9,13 +9,12 @@
                         <header>
                             <h2>{{ article.title }}</h2>
                         </header>
-                        <p>
+                        <p style="word-break: break-all">
                             {{ article.summary }}
                         </p>
                         <p>
                             {% for tag in article.tags %}
-                                <a class="btn btn-default btn-xs"
-                                   href="{{ path('articles_in_tag', {'name': tag.name}) }}">{{ tag.name }}</a>
+                                <a class="btn btn-default btn-xs" href="{{ path('articles_in_tag', {'name': tag.name}) }}">{{ tag.name }}</a>
                             {% endfor %}
                         </p>
                         <small class="author">
