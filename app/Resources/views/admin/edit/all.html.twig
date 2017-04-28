@@ -13,8 +13,8 @@
         <tr>
             <th>Id</th>
             <th>Title</th>
-            <th>Content</th>
-            <th>Summary</th>
+          <!--  <th>Content</th> -->
+          <!--  <th>Summary</th> -->
             <th>Date Added</th>
             <th>View</th>
             <th>Edit</th>
@@ -25,8 +25,8 @@
         {% for article in articles |reverse %}
         <td>{{ article.id }}</td>
         <td>{{ article.title }}</td>
-        <td>{{ article.content }}</td>
-        <td>{{ article.summary }}</td>
+     <!--   <td></td> -->
+      <!--  <td style="word-break: break-all">{#{ article.summary }#}</td> -->
         <td>{{ article.dateAdded |date('Y-m-d H:i:s') }}</td>
         <td><a class="btn btn-xs btn-primary" href="{{ path('article_view' , {id: article.id}) }}">View</a></td>
         <td><a class="btn btn-xs btn-success" href="{{ path('article_edit' , {id: article.id}) }}">Edit</a></td>

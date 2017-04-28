@@ -28,12 +28,19 @@ class Tag
      * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+
+
     /**
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="SoftUniBlogBundle\Entity\Article", mappedBy="tags")
      */
     private $articles;
+
+    public function _construct(){
+        $this->articles = new ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -68,7 +75,7 @@ class Tag
         return $this->name;
     }
 
-    public function _toString(){
+    public function __toString(){
         return $this->name;
     }
 

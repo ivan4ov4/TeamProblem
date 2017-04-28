@@ -15,7 +15,7 @@ class UserEditType extends UserType
             'choices'=>[
              //   'HeadAmin' => 'ROLE_HEADADMIN',
                 'Admin'=> 'ROLE_ADMIN',
-                'Editor' => 'ROLE_EDITOR',
+              //  'Editor' => 'ROLE_EDITOR',
                 'User' => 'ROLE_USER',
             ],
             'expanded'=>true,

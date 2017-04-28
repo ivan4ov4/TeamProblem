@@ -13,18 +13,37 @@
 {% block body_id 'error' %}
 
 {% block main %}
-    <h1 class="text-danger"><i class="fa fa-unlock-alt" aria-hidden="true"></i> {{ 'http_error.name'|trans({ '%status_code%': 403 }) }}</h1>
+    {#<h1 class="text-danger"><i class="fa fa-unlock-alt" aria-hidden="true"></i> {{ 'http_error.name'|trans({ '%status_code%': 403 }) }}</h1>#}
 
-    <p class="lead">
-        {{ 'http_error_403.description'|trans }}
-    </p>
-    <p>
-        {{ 'http_error_403.suggestion'|trans }}
-    </p>
+    {#<p class="lead">#}
+        {#{{ 'http_error_403.description'|trans }}#}
+    {#</p>#}
+    {#<p>#}
+        {#{{ 'http_error_403.suggestion'|trans }}#}
+    {#</p>#}
+
+    <h1>Oooops. You do not have access to see these resources. <br> Please try again later.</h1>
+    <p>You'll be automatically redirected in <span id="count">5</span> seconds...</p>
+
+    <script type="text/javascript">
+        window.onload = function(){
+            (function(){
+                var counter = 4;
+                setInterval(function() {
+                    counter--;
+                    if (counter >= 0) {
+                        span = document.getElementById("count");
+                        span.innerHTML = counter;
+                    }
+                }, 1000);
+            })();
+        }
+    </script>
+    <meta http-equiv="refresh" content="10;{{ path('blog_index') }}" />
 {% endblock %}
 
-{% block sidebar %}
-    {{ parent() }}
+{#{% block sidebar %}#}
+    {#{{ parent() }}#}
 
-    {{ show_source_code(_self) }}
-{% endblock %}
+    {#{{ show_source_code(_self) }}#}
+{#{% endblock %}#}

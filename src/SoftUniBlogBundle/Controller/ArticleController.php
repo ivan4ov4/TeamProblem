@@ -1,6 +1,8 @@
 <?php
 namespace SoftUniBlogBundle\Controller;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
+use phpDocumentor\Reflection\Types\String_;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use SoftUniBlogBundle\Entity\Article;
@@ -31,6 +33,7 @@ class ArticleController extends Controller
             $tags = explode(",", $tagsString);
             $tagRepo = $this->getDoctrine()->getRepository(Tag::class);
             $tagsToSave = new ArrayCollection();
+
             foreach($tags as $tagName)
             {
                 $tagName = trim($tagName);
@@ -89,49 +92,38 @@ class ArticleController extends Controller
         if($article === null){
             return $this->redirectToRoute("blog_index");
         }
+        $tags = $article->getTags();
+        $tagsString = implode(', ', $tags->toArray());
 
         $currentUser = $this->getUser();
-        if(!$currentUser->isAuthor($article) && !$currentUser->isAdmin() && !$currentUser->isEditor()){
+
+        if(!$currentUser->isAuthor($article) && !$currentUser->isAdmin()){
             return $this->redirectToRoute('blog_index');
         }
 
         $form = $this->createForm(ArticleType::class, $article);
-
         $form->handleRequest($request);
-
+//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========
         if($form -> isSubmitted() && $form -> isValid()){
+        $em = $this->getDoctrine()->getManager();
 
-            $data = $this->getDoctrine()->getManager();
-            $tagsString = $request->get('tags');
-            $tags = explode(",", $tagsString);
-            $tagRepo = $this->getDoctrine()->getRepository(Tag::class);
-            $tagsToSave = new ArrayCollection();
-            foreach($tags as $tagName)
-            {
-                $tagName = trim($tagName);
-                $tag = $tagRepo->findOneBy(['name' => $tagName]);
-                if ($tag == null)
-                {
+       // $tagsString = $request->get('tags');
+       // $tags = $this->getTags($em, $tagsString);
+       // $article->setTags($tags);
+       // $article->setAuthor($this->getUser());
 
-                    $tag = new Tag();
-                    $tag->setName($tagName);
-                    $data->persist($tag);
-                }
-                $tagsToSave-> add($tag);
-            }
+        $em->persist($article);
+        $em->flush();
 
-
-            $data->persist($article);
-            $data->flush();
-
-            return $this->redirectToRoute('article_view', [
-                'id' => $article->getId()]
-            );
+        return $this->redirectToRoute('blog_index');
+//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========//=========
         }
 
         return $this->render('article/edit.html.twig',[
             'article' => $article,
-            'form' => $form->createView()]);
+            'form' => $form->createView(),
+            'tags'=> $tagsString
+            ]);
     }
 
 
@@ -174,5 +166,32 @@ class ArticleController extends Controller
             'article' => $article,
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @param $em EntityManager
+     * @param $tagsString String
+     *
+     * @return ArrayCollection
+     */
+    private function getTags($em, $tagsString){
+
+        $tags = explode(",", $tagsString);
+        $tagRepo = $this->getDoctrine()->getRepository(Tag::class);
+        $tagsToSlave = new ArrayCollection();
+
+        foreach ($tags as $tagName){
+        $tagName = trim($tagName);
+        $tag = $tagRepo->findBy(['name' => $tagName]);
+
+        if($tag == null){
+            $tag = new Tag();
+            $tag->setName($tagName);
+            $em->persist($tag);
+        }
+        $tagsToSlave->add($tag);
+
+        }
+        return $tagsToSlave;
     }
 }

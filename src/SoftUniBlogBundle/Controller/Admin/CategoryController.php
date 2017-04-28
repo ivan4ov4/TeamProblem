@@ -11,10 +11,7 @@ namespace SoftUniBlogBundle\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use SoftUniBlogBundle\Entity\Category;
-use SoftUniBlogBundle\Entity\User;
 use SoftUniBlogBundle\Form\CategoryType;
-use SoftUniBlogBundle\Form\UserEditType;
-use SoftUniBlogBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

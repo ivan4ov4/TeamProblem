@@ -6,11 +6,17 @@
             <div class="col-md-12">
                 <article>
                     <header>
-                        <h2>{{ article.title }}</h2>
+                        <h2 style="word-break: break-all" >{{ article.title }}</h2>
                     </header>
 
-                    <p>
+                    <p style="word-break: break-all">
                         {{ article.content }}
+                    </p>
+
+                    <p>
+                        {% for tag in article.tags %}
+                            <a class="btn btn-default btn-xs" href="{{ path('articles_in_tag', {'name': tag.name}) }}">{{ tag.name }}</a>
+                        {% endfor %}
                     </p>
 
                     <small class="author">
